@@ -10,18 +10,31 @@ const createBoard = () => {
     chessBoard.push(row);
   }
 
-  return chessBoard
+  return chessBoard;
 };
 
 const knightPosition = (chessBoard, row, column, possiblePositions) => {
-  if (row < 0 || column < 0 || (row >= 0 && row >= chessBoard.length) || (column > 0 && column >= chessBoard[0].length)) {
+  if (
+    row < 0 ||
+    column < 0 ||
+    (row >= 0 && row >= chessBoard.length) ||
+    (column > 0 && column >= chessBoard[0].length)
+  ) {
     return;
   }
 
-  const position = `${columnLabel[row + 1]}${column + 1}`
+  let label;
+  Object.keys(columnLabel).forEach((key) => {
+    if (columnLabel[key] === row + 1) {
+      label = key;
+    }
+  });
+
+  const position = `${label}${column + 1}`;
   possiblePositions.push(position);
+  
   return;
-}
+};
 
 const possibleKnightPositions = (currentPosition) => {
   const chessBoard = createBoard();
@@ -47,6 +60,6 @@ const possibleKnightPositions = (currentPosition) => {
   knightPosition(chessBoard, row - 2, column - 1, possiblePositions);
 
   return possiblePositions;
-}
+};
 
-module.exports = { possibleKnightPositions }
+module.exports = { possibleKnightPositions };
