@@ -6,7 +6,7 @@ const createBoard = () => {
   const rows = 8;
 
   for (let idx = 0; idx < rows; idx++) {
-    const row = new Array(8).fill(0, 0, 8);
+    const row = createCells();
     chessBoard.push(row);
   }
 
@@ -32,7 +32,7 @@ const knightPosition = (chessBoard, row, column, possiblePositions) => {
 
   const position = `${label}${column + 1}`;
   possiblePositions.push(position);
-  
+
   return;
 };
 
